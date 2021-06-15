@@ -1,0 +1,30 @@
+{
+  "name": "monotes",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "fix": "npx standard --fix || true"
+  },
+  "dependencies": {
+    "marked": "^2.0.0",
+    "next": "^11.0.0",
+    "react": "16.14",
+    "react-dom": "16.14",
+    "fs-extra": "^10.0.0",
+    "dotenv": "^10.0.0",
+    "glob": "^7.1.7",
+    "gray-matter": "^4.0.3"
+  },
+  "standard": {
+    "ignore": [
+      "node_modules"
+    ],
+    "global": [
+      "localStorage",
+      "Blob"
+    ]
+  }
+}

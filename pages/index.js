@@ -8,8 +8,6 @@ import matter from "gray-matter"
 import glob from 'glob'
 import fs from 'fs-extra'
 
-import { removeFilePart } from 'lib/utils'
-
 export default function Home({ docs }) {
   const [dark, setDark] = useState(false)
 
@@ -62,7 +60,8 @@ export default function Home({ docs }) {
                         pathname: `docs/${doc.url}`,
                       }}
                       passHref>
-                      <a>{doc.title}
+                      <a>
+                        {doc.title ? doc.title : doc.path}
                         <div className="doc-path">{doc.url}</div>
                       </a>
                     </Link>
@@ -148,18 +147,20 @@ export async function getStaticProps() {
   const PATH = process.env.NEXT_PUBLIC_DOCS_READ_PATH
   const REPLACE = process.env.NEXT_PUBLIC_DOCS_UNIX_PATH.replace('C:\/\/', 'C:\/')
   const FORMAT = process.env.NEXT_PUBLIC_DOCS_FORMAT
+
   let files = await glob.sync(`${PATH}/**/*${FORMAT}`)
+
   files.map(f => {
     if (!f.includes('node_modules')) {
-      let fileName = removeFilePart(f.replace(FORMAT, '').replace(REPLACE, ''))
+      let cleanName = f.replace(FORMAT, '').replace(REPLACE, '')
       let fileContents = fs.readFileSync(f, 'utf-8')
       let matterDoc = matter(fileContents)
       let { name, title } = matterDoc.data
       docs.push({
         path: f,
-        url: fileName,
-        name: name || null,
-        title: title || null,
+        url: cleanName,
+        name: name || cleanName,
+        title: title || cleanName,
         raw: fileContents
       })
     }

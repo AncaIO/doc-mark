@@ -3,12 +3,9 @@ import marked from 'marked'
 import Spacer from 'components/spacer'
 import Padding from 'components/padding'
 import Button from 'components/button'
-import placeholderText from 'constants/placeholder'
-import { removeFilePart } from 'lib/utils'
 import matter from "gray-matter"
 import glob from 'glob'
 import fs from 'fs-extra'
-import { useRouter } from 'next/router'
 
 const KEYS = {
   TAB: 9
@@ -20,8 +17,6 @@ export default function Doc({ doc }) {
   const [dark, setDark] = useState(false)
   const textAreaRef = useRef()
   const previewAreaRef = useRef()
-
-  console.log(doc)
 
   useEffect(() => {
     const theme = localStorage.getItem('theme')
@@ -65,18 +60,8 @@ export default function Doc({ doc }) {
     setValue(e.target.value)
   }
 
-  // const exportFile = () => {
-  //   const a = document.createElement('a')
-  //   document.body.appendChild(a)
-  //   const file = new Blob([value], { type: 'text/plain' })
-  //   a.href = window.URL.createObjectURL(file)
-  //   a.download = 'mark.md'
-  //   a.click()
-  //   document.body.removeChild(a)
-  // }
-
   const saveFile = async () => {
-    let filePath = `${doc.id.join('/')}/en`
+    let filePath = `${doc.id.join('/')}`
     return await fetch(`/api/${filePath}`, {
       method: 'POST',
       body: value
@@ -189,16 +174,20 @@ export default function Doc({ doc }) {
   )
 }
 
+const PATH = process.env.NEXT_PUBLIC_DOCS_UNIX_PATH
+const FORMAT = process.env.NEXT_PUBLIC_DOCS_FORMAT
+const REPLACE = process.env.NEXT_PUBLIC_DOCS_UNIX_PATH.replace('C:\/\/', 'C:\/')
+
 export async function getStaticPaths() {
+
   let paths = []
-  const PATH = process.env.NEXT_PUBLIC_DOCS_READ_PATH
-  const REPLACE = process.env.NEXT_PUBLIC_DOCS_UNIX_PATH.replace('C:\/\/', 'C:\/')
-  const FORMAT = process.env.NEXT_PUBLIC_DOCS_FORMAT
+
   let files = await glob.sync(`${PATH}/**/*${FORMAT} `)
 
   files.map(f => {
     if (!f.includes('node_modules')) {
-      paths.push({ params: { id: removeFilePart(f.replace(FORMAT, '').replace(REPLACE, '')).split('/') } })
+      let cleanName = f.replace(FORMAT, '').replace(REPLACE, '')
+      paths.push({ params: { id: cleanName.split('/') } })
     }
   })
   return {
@@ -208,9 +197,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const PATH = process.env.NEXT_PUBLIC_DOCS_UNIX_PATH
-  const FORMAT = process.env.NEXT_PUBLIC_DOCS_FORMAT
-  const FILENAME = `${PATH}/${params.id.join('/')}/en${FORMAT}`.replace('//', '/')
+
+  const FILENAME = `${PATH}/${params.id.join('/')}${FORMAT}`.replace('//', '/')
+  let cleanName = FILENAME.replace(FORMAT, '').replace(REPLACE, '')
+
   let fileContents = fs.readFileSync(FILENAME, 'utf-8')
   let matterDoc = matter(fileContents)
   let { name, title } = matterDoc.data
@@ -219,8 +209,8 @@ export async function getStaticProps({ params }) {
       doc: {
         path: FILENAME,
         id: params.id,
-        name,
-        title,
+        name: name || cleanName,
+        title: title || cleanName,
         raw: fileContents
       }
     },

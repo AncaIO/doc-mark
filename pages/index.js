@@ -56,15 +56,17 @@ export default function Home({ docs }) {
             {documents.length
               ? <div className="documents">
                 {documents.map((doc, index) => {
-                  return <div className="doc-link" key={`${doc.name}-${index}`}>
+                  return <div className="doc-link" key={`doc-${index}`}>
                     <Link href=
                       {{
                         pathname: `docs/${doc.url}`,
                       }}
                       passHref>
-                      <a>{doc.title}</a>
+                      <a>{doc.title}
+                        <div className="doc-path">{doc.url}</div>
+                      </a>
                     </Link>
-                    <div className="doc-path">{doc.url}</div>
+
                   </div>
                 })}
               </div>
@@ -156,8 +158,8 @@ export async function getStaticProps() {
       docs.push({
         path: f,
         url: fileName,
-        name,
-        title,
+        name: name || null,
+        title: title || null,
         raw: fileContents
       })
     }

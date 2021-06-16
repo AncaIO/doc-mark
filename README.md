@@ -20,18 +20,18 @@ DocMark is an application for editing Markdown files from your local filesystem.
   | --- | --- | --- |
   | `NEXT_PUBLIC_DOCS_READ_PATH` | `C:\Users\me\Projects\doc-mark`|The absolute path to the folder with documents. |
   | `NEXT_PUBLIC_DOCS_UNIX_PATH` | `C:/Users/ance/Projects/doc-mark/` |The absolute path to the folder with documents UNIX style. Note the closing `/`. On a UNIX system, the same value as `NEXT_PUBLIC_DOCS_READ_PATH` with an extra backslash at the end. |
-  | `NEXT_PUBLIC_DOCS_FORMAT` | `.md` | The format of the files you want to edit. Theoretically, you could use this editor for any plain text format, but the preview feature will give you no value. |
+  | `NEXT_PUBLIC_DOCS_FORMAT` | `.md` | The format of the files you want to edit. Theoretically, you could use this editor for any plain text format, but the preview feature will give you no value. |    
   
-  If you want to edit all the Markdown files in this project, your `.env` file should look like this: 
-  ```
-    NEXT_PUBLIC_DOCS_READ_PATH=C:\Users\ance\Projects\doc-mark
-    NEXT_PUBLIC_DOCS_UNIX_PATH=C:/Users/ance/Projects/doc-mark/
-    NEXT_PUBLIC_DOCS_FORMAT=.md
-  ```
-  This configuration will detect this README file. 
+  > Example: 
+  >   ```
+  >   NEXT_PUBLIC_DOCS_READ_PATH=C:\Users\me\Projects\doc-mark
+  >   NEXT_PUBLIC_DOCS_UNIX_PATH=C:/Users/ance/Projects/doc-mark/
+  >   NEXT_PUBLIC_DOCS_FORMAT=.md
+  >   ```
+  
 6. From the front page of the application, click the link to the document you want to edit.
-7. Make your changes to the document.
-8. Click the **Save File** button. 
+8. Make your changes to the document.
+9. Click the **Save File** button. 
 
 ## Limitations
 - NO AUTOSAVE.

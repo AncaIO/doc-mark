@@ -4,7 +4,8 @@ DocMark is an application for editing Markdown files from your local filesystem.
 
 ## Features
 - Markdown editor with preview. Thanks, [@barelyhuman](https://github.com/barelyhuman/), for the simple and elegant solution of your [Mark editor](https://github.com/barelyhuman/mark). 
-- Recursively matches files of a specific format in a directory. You can just open a large project. It excludes `node_module` markdown files. 
+- Recursively matches files of a specific format in a directory. 
+- Excludes `node_module` markdown files. 
 - Since the editor is based on a simple `<textarea>`, browser extensions like Grammarly or ProWritingAid work. 
 - Saving the edited markdown in the browser updates the local file. 
 
@@ -37,7 +38,7 @@ DocMark is an application for editing Markdown files from your local filesystem.
 - NO AUTOSAVE.
 - The editor does not (yet!) have keyboard shortcuts for formatting or saving.
 - If you change the `.env` file, you **must** restart the application from the terminal to read the new values into the environment.
-- Although the app can read very large document sets, the limit really depends on your machine. I've successfully used the application with over 100 documents, but no more. Up to you to try more than that BUT keep in mind that all those documents will be listed on the front page. This is far from ideal because:
+- Although the app can read enormous document sets, the limit really depends on your machine. I've successfully used the application with over 100 documents, but no more. It is up to you to try more than that. Keep in mind, however, that all those documents will be listed on the front page. This is far from ideal because:
     - the app does not have pagination for the documents (yet!). 
     - the app does not have search functionality (yet!). 
 - You need to install browser extensions for the spelling and grammar checkers you want to use and get subscriptions as needed. This app only allows these extensions to work as intended. 

@@ -22,9 +22,9 @@ DocMark is an application for editing Markdown files from your local filesystem.
 |NEXT_PUBLIC_DOCS_FORMAT|`.md`|The format of the files you want to edit. Theoretically, you could use this editor for any plain text format, but the preview feature will give you no value.|
   If you want to edit all the Markdown files in this project, your `.env` file should look like this: 
   ```
-NEXT_PUBLIC_DOCS_READ_PATH=C:\Users\ance\Projects\doc-mark
-NEXT_PUBLIC_DOCS_UNIX_PATH=C:/Users/ance/Projects/doc-mark/
-NEXT_PUBLIC_DOCS_FORMAT=.md
+    NEXT_PUBLIC_DOCS_READ_PATH=C:\Users\ance\Projects\doc-mark
+    NEXT_PUBLIC_DOCS_UNIX_PATH=C:/Users/ance/Projects/doc-mark/
+    NEXT_PUBLIC_DOCS_FORMAT=.md
   ```
   This configuration will detect this README file. 
 6. From the front page of the application, click the link to the document you want to edit.
@@ -41,13 +41,13 @@ NEXT_PUBLIC_DOCS_FORMAT=.md
 - You need to install browser extensions for the spelling and grammar checkers you want to use and get subscriptions as needed. This app only allows these extensions to work as intended. 
 
 ## Roadmap
-[ ] Add keyboard shortcuts for common actions: save*, bold, italic.
+[] Add keyboard shortcuts for common actions: save*, bold, italic.
 
-[ ] Add search support. 
+[] Add search support. 
 
-[ ] Add pagination or incremental loading. 
+[] Add pagination or incremental loading. 
 
-[ ] Refine the look of the UI (better code samples) or provide the ability to use external CSS for closer-to-production styling. 
+[] Refine the look of the UI (better code samples) or provide the ability to use external CSS for closer-to-production styling. 
 
 ## Contributions welcome!
 

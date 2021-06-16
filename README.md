@@ -3,7 +3,7 @@
 DocMark is an application for editing Markdown files from your local filesystem. 
 
 ## Features
-- Markdown editor with preview. Thanks, @barelyhuman, for the simple and elegant solution of your Mark editor. 
+- Markdown editor with preview. Thanks, [@barelyhuman](https://github.com/barelyhuman/), for the simple and elegant solution of your [Mark editor](https://github.com/barelyhuman/mark). 
 - Recursively matches files of a specific format in a directory. You can just open a large project. It excludes `node_module` markdown files. 
 - Since the editor is based on a simple `<textarea>`, browser extensions like Grammarly or ProWritingAid work. 
 - Saving the edited markdown in the browser updates the local file. 

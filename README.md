@@ -15,11 +15,13 @@ DocMark is an application for editing Markdown files from your local filesystem.
 3. Using a terminal, change the directory to the root of this repository. 
 4. In the terminal, run `npm install`. 
 5. Create a file called `.env`, and provide values for the following variables:
-  |Variable| Value (example) | Description|
-  |---|---|---|
-  |`NEXT_PUBLIC_DOCS_READ_PATH`|`C:\Users\me\Projects\doc-mark`|The absolute path to the folder with documents.|
-|`NEXT_PUBLIC_DOCS_UNIX_PATH`|`C:/Users/ance/Projects/doc-mark/`|The absolute path to the folder with documents UNIX style. Note the closing `/`. On a UNIX system, the same value as `NEXT_PUBLIC_DOCS_READ_PATH` with an extra backslash at the end.|
-|NEXT_PUBLIC_DOCS_FORMAT|`.md`|The format of the files you want to edit. Theoretically, you could use this editor for any plain text format, but the preview feature will give you no value.|
+  
+  | Variable | Value (example) | Description|
+  | --- | --- | --- |
+  | `NEXT_PUBLIC_DOCS_READ_PATH` | `C:\Users\me\Projects\doc-mark`|The absolute path to the folder with documents. |
+  | `NEXT_PUBLIC_DOCS_UNIX_PATH` | `C:/Users/ance/Projects/doc-mark/` |The absolute path to the folder with documents UNIX style. Note the closing `/`. On a UNIX system, the same value as `NEXT_PUBLIC_DOCS_READ_PATH` with an extra backslash at the end. |
+  | `NEXT_PUBLIC_DOCS_FORMAT` | `.md` | The format of the files you want to edit. Theoretically, you could use this editor for any plain text format, but the preview feature will give you no value. |
+  
   If you want to edit all the Markdown files in this project, your `.env` file should look like this: 
   ```
     NEXT_PUBLIC_DOCS_READ_PATH=C:\Users\ance\Projects\doc-mark
